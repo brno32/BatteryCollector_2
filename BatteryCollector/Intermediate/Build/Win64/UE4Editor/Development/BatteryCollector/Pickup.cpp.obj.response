@@ -24,9 +24,9 @@
 /wd4838
 /w44668
 /I "C:\Program Files\Epic Games\UE_4.17\Engine\Source"
-/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Source
-/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Inc\BatteryCollector
-/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Source\BatteryCollector
+/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Source
+/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Inc\BatteryCollector
+/I C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Source\BatteryCollector
 /I "C:\Program Files\Epic Games\UE_4.17\Engine\Source\Runtime\Core\Public"
 /I "C:\Program Files\Epic Games\UE_4.17\Engine\Source\Runtime\Core\Public\Internationalization"
 /I "C:\Program Files\Epic Games\UE_4.17\Engine\Source\Runtime\Core\Public\Async"
@@ -356,9 +356,9 @@
 /FI"C:\Program Files\Epic Games\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\Program Files\Epic Games\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\Program Files\Epic Games\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Source\BatteryCollector\Pickup.cpp"
-/FI"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Development\BatteryCollector\Definitions.BatteryCollector.h"
-/Fo"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Development\BatteryCollector\Pickup.cpp.obj"
+"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Source\BatteryCollector\Pickup.cpp"
+/FI"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Development\BatteryCollector\Definitions.BatteryCollector.h"
+/Fo"C:\Users\brno3\Desktop\unreal_course\BatteryCollector\BatteryCollector\Intermediate\Build\Win64\UE4Editor\Development\BatteryCollector\Pickup.cpp.obj"
 /TP
 /GR-
 /W4
