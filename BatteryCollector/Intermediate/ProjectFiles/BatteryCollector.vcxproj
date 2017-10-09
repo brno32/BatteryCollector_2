@@ -407,7 +407,9 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\BatteryCollector\SpawnVolume.cpp" />
+    <ClCompile Include="..\..\Source\BatteryCollector\SuperBatteryPickup.cpp" />
     <ClInclude Include="..\..\Source\BatteryCollector\SpawnVolume.h" />
+    <ClInclude Include="..\..\Source\BatteryCollector\SuperBatteryPickup.h" />
     <None Include="..\..\BatteryCollector.uproject" />
     <None Include="..\..\Source\BatteryCollector.Target.cs" />
     <None Include="..\..\Source\BatteryCollectorEditor.Target.cs" />

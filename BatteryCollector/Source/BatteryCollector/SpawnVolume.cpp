@@ -31,13 +31,6 @@ void ASpawnVolume::BeginPlay()
 	
 }
 
-// Called every frame
-void ASpawnVolume::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 FVector ASpawnVolume::GetRandomPointsInVolume()
 {
 	FVector SpawnOrigin = WhereToSpawn->Bounds.Origin;

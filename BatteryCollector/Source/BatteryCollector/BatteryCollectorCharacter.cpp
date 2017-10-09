@@ -9,6 +9,7 @@
 #include "GameFramework/Controller.h"
 #include "Pickup.h"
 #include "BatteryPickup.h"
+#include "SuperBatteryPickup.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -173,10 +174,16 @@ void ABatteryCollectorCharacter::CollectPickups()
 			TestPickup->WasCollected();
 			// check to see if the pickup is also a battery
 			ABatteryPickup* const TestBattery = Cast<ABatteryPickup>(TestPickup);
+			ASuperBatteryPickup* const TestBattery2 = Cast<ASuperBatteryPickup>(TestPickup);
 			if (TestBattery)
 			{
 				// increase the collected power
 				CollectedPower += TestBattery->GetPower();
+			}
+			else if (TestBattery2)
+			{
+				// increase the collected power
+				CollectedPower += TestBattery2->GetPower();
 			}
 			// deactive the pickup
 			TestPickup->SetActive(false);

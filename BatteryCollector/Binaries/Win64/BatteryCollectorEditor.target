@@ -17,15 +17,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-BatteryCollector-7857.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-BatteryCollector-4295.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-BatteryCollector-7857.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-BatteryCollector-4295.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-BatteryCollector-7857.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-BatteryCollector-4295.lib",
 			"Type" : "ImportLibrary"
 		},
 		{
