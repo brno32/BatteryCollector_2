@@ -68,7 +68,7 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	SpeedFactor = 0.75f;
 	BaseSpeed = 10.f;
 
-	// Initialize count of last ditch calls
+	// Initialize last ditch calls
 	int32 Calls = 0;
 }
 
@@ -229,10 +229,10 @@ void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
 void ABatteryCollectorCharacter::CollectAllPickups()
 {
 	// only let player use last ditch power once 
-	if (Calls > 0) { return; }
+	if (Calls != 0) { return; }
 	// only let player call when they're power is half gone
 	if (CharacterPower > (InitialPower / 2)) { return; }
-	Calls++;
+	Calls--;
 
 	// Get all overlapping actors and store them in array
 	TArray<AActor*> AllCollectedActors;
