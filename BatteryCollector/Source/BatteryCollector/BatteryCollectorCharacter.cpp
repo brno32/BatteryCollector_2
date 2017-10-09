@@ -11,6 +11,7 @@
 #include "BatteryPickup.h"
 #include "SuperBatteryPickup.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ABatteryCollectorCharacter
@@ -51,6 +52,11 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	CollectionSphere->AttachTo(RootComponent);
 	CollectionSphere->SetSphereRadius(200.f);
 
+	// Create last ditch collection sphere
+	LastDitchCollectionSphere = CreateDefaultSubobject<USphereComponent>("LastDitchCollectionSphere");
+	LastDitchCollectionSphere->AttachTo(RootComponent);
+	LastDitchCollectionSphere->SetSphereRadius(1500.f);
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 
@@ -61,6 +67,9 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	// set the dependents of the speed on the pwr lvl
 	SpeedFactor = 0.75f;
 	BaseSpeed = 10.f;
+
+	// Initialize count of last ditch calls
+	int32 Calls = 0;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,6 +83,7 @@ void ABatteryCollectorCharacter::SetupPlayerInputComponent(class UInputComponent
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	PlayerInputComponent->BindAction("Collect", IE_Pressed, this, &ABatteryCollectorCharacter::CollectPickups);
+	PlayerInputComponent->BindAction("CollectAll", IE_Pressed, this, &ABatteryCollectorCharacter::CollectAllPickups);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ABatteryCollectorCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABatteryCollectorCharacter::MoveRight);
@@ -214,4 +224,60 @@ void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
 	GetCharacterMovement()->MaxWalkSpeed = BaseSpeed + SpeedFactor * CharacterPower;
 	// call visual effect
 	PowerChangeEffect();
+}
+
+void ABatteryCollectorCharacter::CollectAllPickups()
+{
+	// only let player use last ditch power once 
+	if (Calls > 0) { return; }
+	// only let player call when they're power is half gone
+	if (CharacterPower > (InitialPower / 2)) { return; }
+	Calls++;
+
+	// Get all overlapping actors and store them in array
+	TArray<AActor*> AllCollectedActors;
+	LastDitchCollectionSphere->GetOverlappingActors(AllCollectedActors);
+
+	// keep track of collected battery power
+	float CollectedPower = 0;
+
+	// For each actor in array
+	for (int32 iCollected = 0; iCollected < AllCollectedActors.Num(); iCollected++)
+	{
+
+		// Cast actor to pickup
+		APickup* TestPickup = Cast<APickup>(AllCollectedActors[iCollected]);
+
+		// if cast is successful and pickup is active
+		if (TestPickup && !TestPickup->IsPendingKill() && TestPickup->IsActive())
+		{
+			// call the pickups WasCollected function
+			TestPickup->WasCollected();
+			// check to see if the pickup is also a battery
+			ABatteryPickup* const TestBattery = Cast<ABatteryPickup>(TestPickup);
+			ASuperBatteryPickup* const TestBattery2 = Cast<ASuperBatteryPickup>(TestPickup);
+			if (TestBattery)
+			{
+				// increase the collected power
+				CollectedPower += TestBattery->GetPower();
+			}
+			else if (TestBattery2)
+			{
+				// increase the collected power
+				CollectedPower += TestBattery2->GetPower();
+			}
+			// deactive the pickup
+			TestPickup->SetActive(false);
+		}
+	}
+	if (CollectedPower > 0)
+	{
+		UpdatePower(CollectedPower);
+	}
+	
+}
+
+int32 ABatteryCollectorCharacter::GetCalls() const
+{
+	return Calls;
 }

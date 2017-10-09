@@ -24,6 +24,10 @@ class ABatteryCollectorCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collection", meta = (AllowPrivateAccess = "true"))
 	class USphereComponent* CollectionSphere;
 
+	/** Last ditch collection sphere */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collection", meta = (AllowPrivateAccess = "true"))
+	class USphereComponent* LastDitchCollectionSphere;
+
 public:
 	ABatteryCollectorCharacter();
 
@@ -47,9 +51,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Power")
 	void UpdatePower(float PowerChange);
 
+	/** Get number of times last ditch was called */
+	UFUNCTION(BlueprintCallable, Category = "Power")
+	int32 GetCalls() const;
 
 protected:
-
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
@@ -86,6 +92,10 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Pickups")
 	void CollectPickups();
 
+	/** Called when key pressed */
+	UFUNCTION(BlueprintCallable, Category = "Pickups")
+	void CollectAllPickups();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", meta = (BlueprintProtected = "true"))
 	float InitialPower;
 
@@ -98,6 +108,9 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Power")
 	void PowerChangeEffect();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Power")
+	int32 Calls;
 
 private:
 	/** Current pwr lvl of character */

@@ -20,8 +20,8 @@ void EmptyLinkFunctionForGeneratedCodeBatteryCollector_init() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/BatteryCollector")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x991F42B5;
-			Guid.B = 0x2F02529B;
+			Guid.A = 0xE498C7FC;
+			Guid.B = 0xDB5E31B0;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

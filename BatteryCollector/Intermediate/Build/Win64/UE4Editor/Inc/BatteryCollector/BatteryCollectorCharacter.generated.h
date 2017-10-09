@@ -15,11 +15,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define BatteryCollector_Source_BatteryCollector_BatteryCollectorCharacter_h_13_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execCollectAllPickups) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->CollectAllPickups(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execCollectPickups) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		this->CollectPickups(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetCalls) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetCalls(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -51,11 +67,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define BatteryCollector_Source_BatteryCollector_BatteryCollectorCharacter_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execCollectAllPickups) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->CollectAllPickups(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execCollectPickups) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		this->CollectPickups(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetCalls) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetCalls(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -135,9 +167,11 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ABatteryCollectorCharacter); \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(ABatteryCollectorCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(ABatteryCollectorCharacter, FollowCamera); } \
 	FORCEINLINE static uint32 __PPO__CollectionSphere() { return STRUCT_OFFSET(ABatteryCollectorCharacter, CollectionSphere); } \
+	FORCEINLINE static uint32 __PPO__LastDitchCollectionSphere() { return STRUCT_OFFSET(ABatteryCollectorCharacter, LastDitchCollectionSphere); } \
 	FORCEINLINE static uint32 __PPO__InitialPower() { return STRUCT_OFFSET(ABatteryCollectorCharacter, InitialPower); } \
 	FORCEINLINE static uint32 __PPO__SpeedFactor() { return STRUCT_OFFSET(ABatteryCollectorCharacter, SpeedFactor); } \
 	FORCEINLINE static uint32 __PPO__BaseSpeed() { return STRUCT_OFFSET(ABatteryCollectorCharacter, BaseSpeed); } \
+	FORCEINLINE static uint32 __PPO__Calls() { return STRUCT_OFFSET(ABatteryCollectorCharacter, Calls); } \
 	FORCEINLINE static uint32 __PPO__CharacterPower() { return STRUCT_OFFSET(ABatteryCollectorCharacter, CharacterPower); }
 
 
