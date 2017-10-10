@@ -406,8 +406,10 @@
     <NMakeOutput>..\..\Binaries\HTML5\BatteryCollector-HTML5-Shipping.exe</NMakeOutput>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\BatteryCollector\DropMegaBattery.cpp" />
     <ClCompile Include="..\..\Source\BatteryCollector\SpawnVolume.cpp" />
     <ClCompile Include="..\..\Source\BatteryCollector\SuperBatteryPickup.cpp" />
+    <ClInclude Include="..\..\Source\BatteryCollector\DropMegaBattery.h" />
     <ClInclude Include="..\..\Source\BatteryCollector\SpawnVolume.h" />
     <ClInclude Include="..\..\Source\BatteryCollector\SuperBatteryPickup.h" />
     <None Include="..\..\BatteryCollector.uproject" />

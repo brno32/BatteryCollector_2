@@ -70,6 +70,9 @@
     <ClInclude Include="..\..\Source\BatteryCollector\SuperBatteryPickup.h">
       <Filter>Source\BatteryCollector</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BatteryCollector\DropMegaBattery.h">
+      <Filter>Source\BatteryCollector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\BatteryCollector\BatteryPickup.cpp">
@@ -79,6 +82,9 @@
       <Filter>Source\BatteryCollector</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BatteryCollector\SuperBatteryPickup.cpp">
+      <Filter>Source\BatteryCollector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BatteryCollector\DropMegaBattery.cpp">
       <Filter>Source\BatteryCollector</Filter>
     </ClCompile>
   </ItemGroup>

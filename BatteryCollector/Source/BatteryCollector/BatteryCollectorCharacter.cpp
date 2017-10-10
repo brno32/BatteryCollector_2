@@ -55,7 +55,7 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	// Create last ditch collection sphere
 	LastDitchCollectionSphere = CreateDefaultSubobject<USphereComponent>("LastDitchCollectionSphere");
 	LastDitchCollectionSphere->AttachTo(RootComponent);
-	LastDitchCollectionSphere->SetSphereRadius(1500.f);
+	LastDitchCollectionSphere->SetSphereRadius(1250.f);
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
@@ -68,6 +68,7 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	SpeedFactor = 0.75f;
 	BaseSpeed = 10.f;
 
+	// TODO Find out why this doesn't get set
 	// Initialize last ditch calls
 	int32 Calls = 0;
 }
@@ -228,6 +229,7 @@ void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
 
 void ABatteryCollectorCharacter::CollectAllPickups()
 {
+	// TODO Find out why this is necessary
 	// only let player use last ditch power once 
 	if (Calls != 0) { return; }
 	// only let player call when they're power is half gone

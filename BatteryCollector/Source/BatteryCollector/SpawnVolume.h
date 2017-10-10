@@ -48,11 +48,10 @@ private:
 	/** Box component to specify where pickups should be spawned */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = true))
 	class UBoxComponent* WhereToSpawn;
-
-	/** Handle spawning new pickup */
-	void SpawnPickup();
 	
 	/** The current spawn delay */
 	float SpawnDelay;
 
+	/** Handle spawning new pickup */
+	void SpawnPickup();
 };
