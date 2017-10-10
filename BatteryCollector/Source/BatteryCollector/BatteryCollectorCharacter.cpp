@@ -232,8 +232,6 @@ void ABatteryCollectorCharacter::CollectAllPickups()
 	// TODO Find out why this is necessary
 	// only let player use last ditch power once 
 	if (Calls != 0) { return; }
-	// only let player call when they're power is half gone
-	if (CharacterPower > (InitialPower / 2)) { return; }
 	Calls--;
 
 	// Get all overlapping actors and store them in array
