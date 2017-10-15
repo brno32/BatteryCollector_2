@@ -229,7 +229,7 @@ void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
 
 void ABatteryCollectorCharacter::CollectAllPickups()
 {
-	// TODO Find out why this is necessary
+	// TODO Find out why this is necessary, i.e., why a less than operator won't work
 	// only let player use last ditch power once 
 	if (Calls != 0) { return; }
 	Calls--;
